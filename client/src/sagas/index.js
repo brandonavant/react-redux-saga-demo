@@ -9,7 +9,7 @@ export function* getAccounts() {
       name: 'Brandon Avant',
     },
   ];
-  // const accounts = yield call(API.getAccounts);
+  // const accounts = yield call(API.getAccounts); TODO: Create API Service, which utilizes Axios to make calls out to the API.
   if (accounts) {
     yield put(actions.getAccountsSuccess(accounts));
   } else {
