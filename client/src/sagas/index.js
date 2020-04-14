@@ -1,17 +1,24 @@
 import { takeEvery, call, all, put, fork } from 'redux-saga/effects';
 import * as actions from '../actions';
 import actionTypes from '../constants/actionTypes';
+import axios from 'axios';
+
+function apiCall() {
+  return axios
+    .get('http://localhost:3001/api/accounts')
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+}
 
 export function* getAccounts() {
-  const accounts = [
-    {
-      id: 1,
-      name: 'Brandon Avant',
-    },
-  ];
-  // const accounts = yield call(API.getAccounts); TODO: Create API Service, which utilizes Axios to make calls out to the API.
-  if (accounts) {
-    yield put(actions.getAccountsSuccess(accounts));
+  const response = yield call(apiCall);
+
+  if (response.data) {
+    yield put(actions.getAccountsSuccess(response.data));
   } else {
     yield put(
       actions.getAccountsError(new Error('Failed to retrieve Accounts'))

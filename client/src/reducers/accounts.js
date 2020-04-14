@@ -1,22 +1,24 @@
 import actionTypes from '../constants/actionTypes';
 
-const accountsReducer = (state = {}, action) => {
+const initialState = {
+  isFetching: false,
+  payload: []
+}
+
+const accounts = (state = initialState, action) => { 
   switch (action.type) {
     case actionTypes.GET_ACCOUNTS:
-      console.log('accountsReducer->GET_ACCOUNTS');
       return {
         ...state, 
         isFetching: true 
       };
     case actionTypes.GET_ACCOUNTS_SUCCESS:
-      console.log('accountsReducer->GET_ACCOUNTS_SUCCESS');
       return {
         ...state, 
         isFetching: false, 
-        accounts: action.accounts 
+        payload: action.accounts 
       };
     case actionTypes.error:
-      console.log('accountsReducer->ERROR');
       return {
         ...state, 
         error: action.error 
@@ -26,4 +28,4 @@ const accountsReducer = (state = {}, action) => {
   }
 }
 
-export default accountsReducer;
+export default accounts;

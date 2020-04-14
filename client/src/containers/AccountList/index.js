@@ -3,44 +3,38 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from '../../actions';
 
-const AccountList = ({ accounts, onRefreshClick }) => {
-  console.log(accounts);
-
+const AccountList = ({ state, onRefreshClick }) => {
   return (
     <>
       <h3>Products</h3>
       <button onClick={() => onRefreshClick()}>Refresh</button>
       <ul>
-        {accounts.accountsReducer.accounts.map((account, index) => {
-          return <li>{account.name}</li>;
+        {state.accounts.payload.map((account, index) => {
+          return <li key={account.id}>{account.name}</li>;
         })}
       </ul>
     </>
   );
 };
 
-// AccountList.propTypes = {
-//   accounts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       name: PropTypes.string.isRequired,
-//     })
-//   ).isRequired,
-// };
+AccountList.propTypes = {
+  accounts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ),
+};
 
-const mapStateToProps = (state) => {
-  return {
-    accounts: state,
-  };
+const mapStateToProps = (state, ownProps) => {
+  return { state };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onRefreshClick: () => {
-      console.log('Dispatching getAccounts');
-
-      dispatch(actions.getAccounts())
-    }
+      dispatch(actions.getAccounts());
+    },
   };
 };
 

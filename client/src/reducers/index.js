@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import accountsReducer from './accountsReducer';
+import accounts from './accounts';
 
-const rootReducer = combineReducers({
-  accountsReducer,
-});
+const rootReducer = combineReducers({ accounts });
 
 export default rootReducer;
