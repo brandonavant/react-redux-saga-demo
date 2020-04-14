@@ -9,8 +9,4 @@ The application consists of both a front-end (React) and and a back-end API (Nod
 
 ## Running Locally
 
-When running the application locally, use the following command to start up both the front-end and back-end.
-
-```BASH
-npm run
-```
+When running the application locally, use the command `npm run dev` to start up both the front-end and back-end.
