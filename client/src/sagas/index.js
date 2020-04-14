@@ -31,5 +31,5 @@ export function* watchGetAccounts() {
 }
 
 export default function* rootSaga() {
-  yield all([fork(getAccounts)]);
+  yield all([fork(getAccounts), fork(watchGetAccounts)]);
 }
