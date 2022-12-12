@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/brandonavant/react-redux-saga-demo#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"
